@@ -1,0 +1,24 @@
+{% extends 'beplinks/base.html' %}
+
+{% block title %}Painel de Assuntos{% endblock %}
+
+{% block conteudo %}
+<h1 class="mb-4">Painel de Assuntos (Eixos Temáticos)</h1>
+
+{% if temas %}
+    <div class="row">
+        {% for tema in temas %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'beplinks:detalhe_tema' tema.id %}">{{ tema.titulo }}</a></h5>
+                        <p class="card-text">{{ tema.resumo|truncatewords:30 }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="lead">Nenhum tema cadastrado ainda.</p>
+{% endif %}
+{% endblock %}

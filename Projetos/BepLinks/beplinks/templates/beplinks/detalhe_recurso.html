@@ -1,0 +1,36 @@
+{% extends 'beplinks/base.html' %}
+
+{% block title %}{{ recurso.nome }}{% endblock %}
+
+{% block conteudo %}
+<h1>{{ recurso.nome }}</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Descrição</h5>
+        <p class="card-text">{{ recurso.descricao|linebreaks }}</p>
+        
+        <dl class="row mt-4">
+            <dt class="col-sm-3">Tema</dt>
+            <dd class="col-sm-9"><a href="{% url 'beplinks:detalhe_tema' recurso.tema.id %}">{{ recurso.tema }}</a></dd>
+            
+            <dt class="col-sm-3">Tipo</dt>
+            <dd class="col-sm-9">{{ recurso.tipo }}</dd>
+            
+            <dt class="col-sm-3">Link</dt>
+            <dd class="col-sm-9"><a href="{{ recurso.url }}" target="_blank" rel="noopener">{{ recurso.url }}</a></dd>
+            
+            <dt class="col-sm-3">Custo</dt>
+            <dd class="col-sm-9">{% if recurso.gratuito %}Gratuito{% else %}Pago{% endif %}</dd>
+            
+            <dt class="col-sm-3">Prestígio</dt>
+            <dd class="col-sm-9">{{ recurso.prestigio }}</dd>
+            
+            <dt class="col-sm-3">Catalogado em</dt>
+            <dd class="col-sm-9">{{ recurso.catalogado_em|date:"d/m/Y à\s H:i" }}</dd>
+        </dl>
+    </div>
+</div>
+
+<a href="{% url 'beplinks:detalhe_tema' recurso.tema.id %}" class="btn btn-outline-primary mt-4">Voltar ao Tema</a>
+{% endblock %}
