@@ -1,0 +1,25 @@
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Banco de dados SQLite
+db.sqlite3
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos do VS Code
+.vscode/
+
+# Outros arquivos temporários
+*.log
+*.tmp
+*.bak
+.DS_Store  # se usar Mac
+.env
+staticfiles/
