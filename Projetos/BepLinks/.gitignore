@@ -23,3 +23,4 @@ __pycache__/
 .DS_Store  # se usar Mac
 .env
 staticfiles/
+mediafiles/
