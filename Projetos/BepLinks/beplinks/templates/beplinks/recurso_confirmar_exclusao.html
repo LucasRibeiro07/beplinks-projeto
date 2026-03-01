@@ -1,0 +1,16 @@
+{% extends 'beplinks/base.html' %}
+
+{% block title %}Excluir recurso{% endblock %}
+
+{% block conteudo %}
+<h1 class="mb-4">Excluir Recurso de Estudo</h1>
+
+<p class="lead">Tem certeza que deseja excluir o recurso <strong>{{ recurso.nome }}</strong>?</p>
+<p class="text-muted">Esta ação não pode ser desfeita.</p>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+    <a href="{% url 'beplinks:detalhe_recurso' recurso.id %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

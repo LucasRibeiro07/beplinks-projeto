@@ -1,0 +1,18 @@
+{% extends 'beplinks/base.html' %}
+
+{% block title %}{{ titulo_pagina }}{% endblock %}
+
+{% block conteudo %}
+<h1 class="mb-4">{{ titulo_pagina }}</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    {% if recurso %}
+        <a href="{% url 'beplinks:detalhe_recurso' recurso.id %}" class="btn btn-secondary">Cancelar</a>
+    {% else %}
+        <a href="{% url 'beplinks:index' %}" class="btn btn-secondary">Cancelar</a>
+    {% endif %}
+</form>
+{% endblock %}

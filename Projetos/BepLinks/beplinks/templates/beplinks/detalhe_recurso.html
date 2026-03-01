@@ -24,7 +24,13 @@
             <dd class="col-sm-9">{% if recurso.gratuito %}Gratuito{% else %}Pago{% endif %}</dd>
             
             <dt class="col-sm-3">Prestígio</dt>
-            <dd class="col-sm-9">{{ recurso.prestigio }}</dd>
+            <dd class="col-sm-9">
+                {{ recurso.prestigio }}
+                <form method="post" action="{% url 'beplinks:voto_prestigio' recurso.id %}" class="d-inline ms-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Curtir</button>
+                </form>
+            </dd>
             
             <dt class="col-sm-3">Catalogado em</dt>
             <dd class="col-sm-9">{{ recurso.catalogado_em|date:"d/m/Y à\s H:i" }}</dd>
@@ -32,5 +38,9 @@
     </div>
 </div>
 
-<a href="{% url 'beplinks:detalhe_tema' recurso.tema.id %}" class="btn btn-outline-primary mt-4">Voltar ao Tema</a>
+<div class="mt-4">
+    <a href="{% url 'beplinks:detalhe_tema' recurso.tema.id %}" class="btn btn-outline-primary">Voltar ao Tema</a>
+    <a href="{% url 'beplinks:recurso_editar' recurso.id %}" class="btn btn-outline-secondary">Editar Recurso</a>
+    <a href="{% url 'beplinks:recurso_excluir' recurso.id %}" class="btn btn-outline-danger">Excluir Recurso</a>
+</div>
 {% endblock %}

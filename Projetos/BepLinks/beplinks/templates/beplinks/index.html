@@ -4,6 +4,10 @@
 
 {% block conteudo %}
 <h1 class="mb-4">Painel de Assuntos (Eixos Temáticos)</h1>
+<p>
+    <a href="{% url 'beplinks:tema_novo' %}" class="btn btn-primary">Adicionar Tema</a>
+    <a href="{% url 'beplinks:recurso_novo' %}" class="btn btn-success">Adicionar Recurso de Estudo</a>
+</p>
 
 {% if temas %}
     <div class="row">
